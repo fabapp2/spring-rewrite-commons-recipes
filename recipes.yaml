@@ -1,0 +1,9 @@
+migrations:
+  - groupId: org.springframework
+    artifactId: spring-rewrite-commons
+    paths:
+      - branch: 0.1.0-SNAPSHOT
+        from-version: 0.1.0-SNAPSHOT
+        to-version: 0.1.0-SNAPSHOT
+        recipe-factory: com.example.RecipeFactory
+        recipe-factory-method: create

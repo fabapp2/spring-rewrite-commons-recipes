@@ -25,6 +25,7 @@
             <groupId>org.springframework.rewrite</groupId>
             <artifactId>spring-rewrite-commons-launcher</artifactId>
             <version>0.1.0-20240124.182318-12</version>
+<!--            <version>0.1.0-SNAPSHOT</version>-->
         </dependency>
     </dependencies>
     <repositories>

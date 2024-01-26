@@ -1,0 +1,41 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: org.springframework.rewrite.UpgradeSnapshot
+displayName: "Upgrade client code after API change"
+description: "Upgrade client code after API change"
+recipeList:
+# Change type for classes moved to root package
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.parsers.RewriteProjectParser
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.recipes.RewriteRecipeDiscovery
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeDiscovery
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.execution.RewriteRecipeLauncher
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeLauncher
+# SpringRewriteCommonsConfiguration has been deprecated and RewriteLauncherConfiguration should be used
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.boot.autoconfigure.SpringRewriteCommonsConfiguration
+    newFullyQualifiedTypeName: org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration
+# d4b4794b: org.springframework.rewrite.support.openrewrite.GenericOpenRewriteRecipe moved to
+#           org.springframework.rewrite.recipes.GenericOpenRewriteRecipe
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.support.openrewrite.GenericOpenRewriteRecipe
+    newFullyQualifiedTypeName: org.springframework.rewrite.recipes.GenericOpenRewriteRecipe
+# 436febcd renamed package org.springframework.rewrite.project.resource to org.springframework.rewrite.resource
+- org.openrewrite.java.ChangePackage:
+    oldPackageName: org.springframework.rewrite.project.resource
+    newPackageName: org.springframework.rewrite.resource
+    recursive: true
+- org.openrewrite.java.ChangePackage:
+    oldPackageName: org.springframework.rewrite.parsers
+    newPackageName: org.springframework.rewrite.parser
+    recursive: true
+# Upgrade dependency version
+- org.openrewrite.maven.UpgradeDependencyVersion:
+    groupId: org.springframework.rewrite
+    artifactId: spring-rewrite-commons-launcher
+    versionPattern: '.*'
+    newVersion: 0.1.0-SNAPSHOT
+#0.1.0-20240126.132525-5
+#retainVersions: com.jcraft:jsch
