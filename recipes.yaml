@@ -3,7 +3,7 @@ migrations:
     artifactId: spring-rewrite-commons
     paths:
       - branch: 0.1.0-SNAPSHOT
-        from-version: 0.1.0-SNAPSHOT
-        to-version: 0.1.0-SNAPSHOT
-        recipe-factory: com.example.RecipeFactory
-        recipe-factory-method: create
+        fromVersion: 0.1.0-SNAPSHOT
+        toVersion: 0.1.0-SNAPSHOT
+        recipeFactory: com.example.RecipeFactory
+        recipeFactoryMethod: create
