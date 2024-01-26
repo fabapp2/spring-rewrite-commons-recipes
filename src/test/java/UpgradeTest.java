@@ -24,6 +24,7 @@ import org.openrewrite.RecipeRun;
 import org.openrewrite.internal.InMemoryLargeSourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;
 import org.springframework.rewrite.boot.autoconfigure.SpringRewriteCommonsConfiguration;
 import org.springframework.rewrite.execution.RewriteRecipeLauncher;
 import org.springframework.rewrite.parsers.RewriteParserConfiguration;
@@ -41,7 +42,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author Fabian Krüger
  */
-@SpringBootTest(classes = { SpringRewriteCommonsConfiguration.class })
+@SpringBootTest(classes = { RewriteLauncherConfiguration.class })
 public class UpgradeTest {
 
     @Autowired
