@@ -1,0 +1,22 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: org.springframework.rewrite.UpgradeSnapshot
+displayName: "Upgrade client code after API change"
+description: "Upgrade client code after API change"
+recipeList:
+# Upgrade dependency version
+- org.openrewrite.maven.UpgradeDependencyVersion:
+      groupId: org.springframework.rewrite
+      artifactId: spring-rewrite-commons-launcher
+      newVersion: 0.1.0-SNAPSHOT
+      #versionPattern: '-jre'
+      #retainVersions: com.jcraft:jsch
+# Change type for classes moved to root package
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.parsers.RewriteProjectParser
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.parsers.RewriteRecipeDiscovery
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeDiscovery
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.execution.RewriteRecipeLauncher
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeLauncher
