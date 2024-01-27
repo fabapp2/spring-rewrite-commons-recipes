@@ -19,17 +19,16 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-rewrite-commons-launcher.version>0.1.0-20240126.085448-13</spring-rewrite-commons-launcher.version>
-        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-20240126.085448-4</spring-rewrite-commons-starter-boot-upgrade.version>
-<!--        <spring-rewrite-commons-launcher.version>0.1.0-SNAPSHOT</spring-rewrite-commons-launcher.version>-->
-<!--        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-SNAPSHOT</spring-rewrite-commons-starter-boot-upgrade.version>-->
+<!--        <spring-rewrite-commons-launcher.version>0.1.0-20240126.085448-13</spring-rewrite-commons-launcher.version>-->
+<!--        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-20240126.085448-4</spring-rewrite-commons-starter-boot-upgrade.version>-->
+        <spring-rewrite-commons-launcher.version>0.1.0-SNAPSHOT</spring-rewrite-commons-launcher.version>
+        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-SNAPSHOT</spring-rewrite-commons-starter-boot-upgrade.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.rewrite</groupId>
             <artifactId>spring-rewrite-commons-starter-boot-upgrade</artifactId>
-<!--                        <version>0.1.0-20240124.182318-3</version>-->
             <version>${spring-rewrite-commons-starter-boot-upgrade.version}</version>
             <exclusions>
                 <exclusion>
@@ -41,7 +40,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.2.1</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>

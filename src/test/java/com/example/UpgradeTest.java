@@ -14,10 +14,8 @@ package com.example;/*
  * limitations under the License.
  */
 
-import org.apache.maven.project.ProjectBuildingHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import org.openrewrite.ExecutionContext;
 import org.openrewrite.Recipe;
 import org.openrewrite.RecipeRun;
@@ -27,13 +25,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;
 import org.springframework.rewrite.parsers.RewriteProjectParser;
 import org.springframework.rewrite.parsers.RewriteProjectParsingResult;
-import org.springframework.rewrite.project.resource.ProjectResourceSet;
 import org.springframework.rewrite.project.resource.ProjectResourceSetFactory;
 import org.springframework.rewrite.project.resource.ProjectResourceSetSerializer;
 import org.springframework.rewrite.recipes.RewriteRecipeDiscovery;
+import org.springframework.rewrite.test.util.TestProjectHelper;
 
 import java.nio.file.Path;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,18 +55,29 @@ public class UpgradeTest {
     @Test
     @DisplayName("should rename parsers package")
     void shouldRenameParsersPackage() {
-        Path baseDir = Path.of(".").toAbsolutePath().normalize(); //TestProjectHelper.getMavenProject("client-project");
+        Path baseDir = TestProjectHelper.getMavenProject("client-project");
         RewriteProjectParsingResult parseResult = parser.parse(baseDir);
         Recipe recipe = RecipeFactory.create();
         assertThat(recipe).isNotNull();
-        ProjectResourceSet resourceSet = resourceSetFactory.create(baseDir, parseResult.sourceFiles());
-        resourceSet.apply(recipe);
-        serializer.writeChanges(resourceSet);
-//        RecipeRun recipeRun = recipe.run(new InMemoryLargeSourceSet(parseResult.sourceFiles()), executionContext);
-//        recipeRun.getChangeset().getAllResults().stream()
-//                .map(r -> r.diff())
-//                .forEach(System.out::println);
-
+        RecipeRun recipeRun = recipe.run(new InMemoryLargeSourceSet(parseResult.sourceFiles()), executionContext);
+        String diffs = recipeRun.getChangeset().getAllResults().stream()
+                .map(r -> r.diff())
+                .collect(Collectors.joining());
+        assertThat(diffs)
+                .contains(
+                    """
+                    +import org.springframework.rewrite.RewriteRecipeDiscovery;
+                    +import org.springframework.rewrite.RewriteRecipeLauncher;
+                    +import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;
+                    +import org.springframework.rewrite.parser.RewriteProjectParser;
+                    +import org.springframework.rewrite.recipes.GenericOpenRewriteRecipe;
+                    +import org.springframework.rewrite.resource.ProjectResourceSet;
+                    +import org.springframework.rewrite.resource.ProjectResourceSetFactory;
+                    """
+                )
+                .contains(
+                    "+@Import(RewriteLauncherConfiguration.class)"
+                );
     }
     
 }

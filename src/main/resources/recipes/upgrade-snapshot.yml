@@ -3,6 +3,10 @@ name: org.springframework.rewrite.UpgradeSnapshot
 displayName: "Upgrade client code after API change"
 description: "Upgrade client code after API change"
 recipeList:
+# Change type for classes moved to root package
+- org.openrewrite.java.ChangeType:
+    oldFullyQualifiedTypeName: org.springframework.rewrite.parser.RewriteProjectParser
+    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
 - org.openrewrite.java.ChangePackage:
     oldPackageName: org.springframework.rewrite.parsers
     newPackageName: org.springframework.rewrite.parser
@@ -12,14 +16,10 @@ recipeList:
     oldPackageName: org.springframework.rewrite.project.resource
     newPackageName: org.springframework.rewrite.resource
     recursive: true
-# Change type for classes moved to root package
 - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.springframework.rewrite.parser.RewriteProjectParser
+    oldFullyQualifiedTypeName: org.springframework.rewrite.parsers.RewriteProjectParser
     newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
 # Did this recipe collide with ChangePackage?
-#- org.openrewrite.java.ChangeType:
-#    oldFullyQualifiedTypeName: org.springframework.rewrite.parser.RewriteProjectParser
-#    newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
 - org.openrewrite.java.ChangeType:
     oldFullyQualifiedTypeName: org.springframework.rewrite.recipes.RewriteRecipeDiscovery
     newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeDiscovery

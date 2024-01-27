@@ -19,14 +19,14 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
+import org.springframework.rewrite.boot.autoconfigure.SpringRewriteCommonsConfiguration;
 import org.springframework.rewrite.execution.RewriteRecipeLauncher;
 import org.springframework.rewrite.parsers.RewriteProjectParser;
 import org.springframework.rewrite.project.resource.ProjectResourceSet;
 import org.springframework.rewrite.project.resource.ProjectResourceSetFactory;
 import org.springframework.rewrite.recipes.RewriteRecipeDiscovery;
 import org.springframework.rewrite.support.openrewrite.GenericOpenRewriteRecipe;
-import org.springframework.rewrite.boot.autoconfigure.SpringRewriteCommonsConfiguration;
-import org.springframework.context.annotation.Import;
 
 /**
  * @author Fabian Krüger
