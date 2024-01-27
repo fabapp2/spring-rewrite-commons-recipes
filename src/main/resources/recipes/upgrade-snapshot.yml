@@ -8,6 +8,9 @@ recipeList:
     oldFullyQualifiedTypeName: org.springframework.rewrite.parsers.RewriteProjectParser
     newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
 - org.openrewrite.java.ChangeType:
+      oldFullyQualifiedTypeName: org.springframework.rewrite.parser.RewriteProjectParser
+      newFullyQualifiedTypeName: org.springframework.rewrite.RewriteProjectParser
+- org.openrewrite.java.ChangeType:
     oldFullyQualifiedTypeName: org.springframework.rewrite.recipes.RewriteRecipeDiscovery
     newFullyQualifiedTypeName: org.springframework.rewrite.RewriteRecipeDiscovery
 - org.openrewrite.java.ChangeType:

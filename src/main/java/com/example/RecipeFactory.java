@@ -31,7 +31,7 @@ public class RecipeFactory {
     public static void main(String[] args) {
         new RecipeFactory().create();
     }
-    public Recipe create() {
+    public static Recipe create() {
         ClassPathResource classPathResource = new ClassPathResource("recipes/upgrade-snapshot.yml");
         Recipe recipe = new RewriteRecipeLoader().createRecipe(ResourceUtil.getContent(classPathResource));
         return recipe;
