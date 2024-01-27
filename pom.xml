@@ -14,6 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-rewrite-commons-launcher.version>0.1.0-20240126.085448-13</spring-rewrite-commons-launcher.version>
         <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-20240126.085448-4</spring-rewrite-commons-starter-boot-upgrade.version>
+<!--        <spring-rewrite-commons-launcher.version>0.1.0-SNAPSHOT</spring-rewrite-commons-launcher.version>-->
+<!--        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-SNAPSHOT</spring-rewrite-commons-starter-boot-upgrade.version>-->
     </properties>
 
     <dependencies>
