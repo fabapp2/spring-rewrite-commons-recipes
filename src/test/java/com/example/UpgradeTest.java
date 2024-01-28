@@ -22,12 +22,12 @@ import org.openrewrite.RecipeRun;
 import org.openrewrite.internal.InMemoryLargeSourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.rewrite.RewriteProjectParser;
+import org.springframework.rewrite.RewriteRecipeDiscovery;
 import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;
-import org.springframework.rewrite.parsers.RewriteProjectParser;
-import org.springframework.rewrite.parsers.RewriteProjectParsingResult;
-import org.springframework.rewrite.project.resource.ProjectResourceSetFactory;
-import org.springframework.rewrite.project.resource.ProjectResourceSetSerializer;
-import org.springframework.rewrite.recipes.RewriteRecipeDiscovery;
+import org.springframework.rewrite.parser.RewriteProjectParsingResult;
+import org.springframework.rewrite.resource.ProjectResourceSetFactory;
+import org.springframework.rewrite.resource.ProjectResourceSetSerializer;
 import org.springframework.rewrite.test.util.TestProjectHelper;
 
 import java.nio.file.Path;
@@ -64,20 +64,14 @@ public class UpgradeTest {
                 .map(r -> r.diff())
                 .collect(Collectors.joining());
         assertThat(diffs)
-                .contains(
-                    """
-                    +import org.springframework.rewrite.RewriteRecipeDiscovery;
-                    +import org.springframework.rewrite.RewriteRecipeLauncher;
-                    +import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;
-                    +import org.springframework.rewrite.parser.RewriteProjectParser;
-                    +import org.springframework.rewrite.recipes.GenericOpenRewriteRecipe;
-                    +import org.springframework.rewrite.resource.ProjectResourceSet;
-                    +import org.springframework.rewrite.resource.ProjectResourceSetFactory;
-                    """
-                )
-                .contains(
-                    "+@Import(RewriteLauncherConfiguration.class)"
-                );
+                .contains("import org.springframework.rewrite.RewriteRecipeDiscovery;")
+                .contains("import org.springframework.rewrite.RewriteRecipeLauncher;")
+                .contains("import org.springframework.rewrite.RewriteProjectParser;")
+                .contains("import org.springframework.rewrite.boot.autoconfigure.RewriteLauncherConfiguration;")
+                .contains("import org.springframework.rewrite.recipes.GenericOpenRewriteRecipe;")
+                .contains("import org.springframework.rewrite.resource.ProjectResourceSet;")
+                .contains("import org.springframework.rewrite.resource.ProjectResourceSetFactory;")
+                .contains("+@Import(RewriteLauncherConfiguration.class)");
     }
     
 }

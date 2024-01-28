@@ -19,8 +19,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        <spring-rewrite-commons-launcher.version>0.1.0-20240126.085448-13</spring-rewrite-commons-launcher.version>-->
-<!--        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-20240126.085448-4</spring-rewrite-commons-starter-boot-upgrade.version>-->
+<!--        <spring-rewrite-commons-launcher.version>0.1.0-20240124.182318-12</spring-rewrite-commons-launcher.version>-->
+<!--        <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-20240124.175448-2</spring-rewrite-commons-starter-boot-upgrade.version>-->
         <spring-rewrite-commons-launcher.version>0.1.0-SNAPSHOT</spring-rewrite-commons-launcher.version>
         <spring-rewrite-commons-starter-boot-upgrade.version>0.1.0-SNAPSHOT</spring-rewrite-commons-starter-boot-upgrade.version>
     </properties>
@@ -35,7 +35,16 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.rewrite</groupId>
+                    <artifactId>spring-rewrite-commons-launcher</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.rewrite</groupId>
+            <artifactId>spring-rewrite-commons-launcher</artifactId>
+            <version>${spring-rewrite-commons-launcher.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -21,11 +21,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.rewrite.parsers.RewriteProjectParser;
-import org.springframework.rewrite.parsers.RewriteProjectParsingResult;
-import org.springframework.rewrite.project.resource.ProjectResourceSet;
-import org.springframework.rewrite.project.resource.ProjectResourceSetFactory;
-import org.springframework.rewrite.project.resource.ProjectResourceSetSerializer;
+import org.springframework.rewrite.RewriteProjectParser;
+import org.springframework.rewrite.parser.RewriteProjectParsingResult;
+import org.springframework.rewrite.resource.ProjectResourceSet;
+import org.springframework.rewrite.resource.ProjectResourceSetFactory;
+import org.springframework.rewrite.resource.ProjectResourceSetSerializer;
 
 import java.nio.file.Path;
 
